@@ -7,7 +7,8 @@ from PIL import Image
 from models import YOLOMODEL
 
 model = YOLOMODEL(
-    './weights/best.pt'
+    model = './weights/best.pt'
+    task='detect'
 )
 
 

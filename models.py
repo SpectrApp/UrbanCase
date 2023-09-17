@@ -3,9 +3,8 @@ import numpy as np
 from ultralytics import YOLO
 
 class YOLOMODEL:
-    def __init__(self, weights_path: str, device: str = 'cpu'):
-        self.model = YOLO(weights_path)
-
+    def __init__(self, weights_path: str, task: str):
+        self.model = YOLO(model=weights_path, task=task)
     def predict(self, image: np.array) -> Tuple:
         results = self.model.predict(image)
         for r in results:
