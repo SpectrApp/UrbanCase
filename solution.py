@@ -7,9 +7,8 @@ from PIL import Image
 from models import YOLOMODEL
 
 model = YOLOMODEL(
-   './weights/best.torchscript'
+   './weights/best.pt'
 )
-
 
 def _glob_images(folder: Path, exts: List[str] = ('*.jpg', '*.png',)) -> List[Path]:
     images = []
