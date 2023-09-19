@@ -14,11 +14,11 @@ RUN apt-get install -y \
 RUN pip3 install -U pip
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-RUN mim install mmcv==2.0.0 # can be deleted
+
 
 # model weights
 RUN mkdir -p ./weights
-COPY weights/faster-rcnn-best.pth ./weights
+COPY weights/best.pt ./weights
 
 # input and output folders
 RUN mkdir -p ./private/images
