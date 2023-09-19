@@ -7,7 +7,7 @@ from PIL import Image
 from models import YOLOMODEL
 
 model = YOLOMODEL(
-    model = './weights/best.pt',
+    weights_path = './weights/best.pt',
     task='detect'
 )
 
@@ -29,7 +29,6 @@ def format_predictions(labels, scores, bboxes) -> str:
 
         line = f"{label} {score} {xmin} {ymin} {xmax} {ymax}"
         formatted.append(line)
-
     return "\n".join(formatted)
 
 
@@ -42,7 +41,6 @@ def predict_folder(input_folder: str, output_folder: str) -> None:
     input_folder = Path(input_folder)
     output_folder = Path(output_folder)
     images_path = _glob_images(input_folder)
-
     for img_path in images_path:
         img = np.asarray(Image.open(img_path))
         bboxes, labels, scores = model.predict(img)
@@ -55,10 +53,8 @@ def predict_folder(input_folder: str, output_folder: str) -> None:
 def main():
     input_folder = './private/images'
     output_folder = './output'
-
     predict_folder(input_folder, output_folder)
 
 
 if __name__ == '__main__':
     main()
-
